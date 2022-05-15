@@ -16,6 +16,14 @@ function Edit_Python_Button_Clicked() {
 	`
 }
 
+function Edit_Node_Button_Clicked() {
+	const body = document.body
+	body.innerHTML = `
+	<input type="text" placeholder="File..." onkeyup="file = this.value">
+	<input type="button" value="submit" onclick="window.location.href = 'node/edit/' + file" id="submit">
+	`
+}
+
 function logout() {
 	window.location.pathname = "/logout";
 }

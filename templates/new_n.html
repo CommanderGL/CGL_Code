@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>CGL Code | Code node.js - {{file}}</title>
+{% endblock %}
+
+{% block body %}
+	<form action="#" method="post">
+		<textarea cols="64" rows="43" name="code">{{code}}</textarea>
+		<br><br>
+		<input type="submit" value="save"  id="submit">
+		<input type="button" value="run" onclick="window.location = 'https://CGLCode.commandergl.repl.co/{{name}}/node/{{file}}'"  id="submit">
+	</form>
+{% endblock %}

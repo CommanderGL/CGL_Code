@@ -125,8 +125,35 @@ def code_py(file):
 
 @app.route('/<user>/python/<file>')
 def run_py(user, file):
-    return run_return(f"users/{user}/{file}")
+    return run_return_py(f"users/{user}/{file}")
 
+@app.route('/node/edit/<file>', methods=["GET", "POST"])
+def code_node(file):
+    if request.method == "POST":
+        code = request.form["code"]
+        os.remove("users/" + session['name'] + '/' + file)
+        with open("users/" + session['name'] + '/' + file, 'w') as f:
+            f.write(code)
+    try:
+        os.mkdir("users/" + session["name"])
+    except:
+        pass
+    try:
+        open("users/" + session['name'] + '/' + file, "x")
+    except:
+        pass
+    if open("users/" + session['name'] + '/' + file, 'r').read() == '':
+        with open("users/" + session['name'] + '/' + file, 'w') as f:
+            f.write("console.log('Hello World!');")
+    return render_template('new_n.html',
+                           name=session['name'],
+                           code=open("users/" + session['name'] + '/' + file, 'r').read(),
+                           file=file)
+
+
+@app.route('/<user>/node/<file>')
+def run_node(user, file):
+    return run_return_node(f"users/{user}/{file}")
 
 @app.route('/logout')
 def logout():
