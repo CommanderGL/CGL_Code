@@ -1,4 +1,4 @@
-# CGL_Code
+# CGL Code
 
 This project is under development so there may be a few glitches.
 

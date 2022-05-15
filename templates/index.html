@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>CGL Code</title>
+{% endblock %}
+
+{% block body %}
+
+	{% if LOGGED_IN == True %}
+  	<h1>You are logged in as {{name}}.</h1>
+		<br><br>
+		<button onclick="logout()">Logout</button>
+		<button onclick="Edit_HTML_Button_Clicked()">Code HTML</button>
+		<button onclick="Edit_Python_Button_Clicked()">Code Python</button>
+	{% endif %}
+
+	{% if LOGGED_IN == False %}
+		<a href="login"><button>Login</button></a>
+		<a href="sign_up"><button>Sign Up</button></a>
+	{% endif %}
+
+	<script src="static/JS/home.js"></script>
+
+{% endblock %}

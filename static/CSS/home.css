@@ -1,0 +1,7 @@
+button, #submit {
+	border: 3.5px solid #1c5e7a;
+	outline: thin;
+	background-color: darkcyan;
+	padding: 6.2px 2.1px;
+	border-radius: 1rem;
+}
