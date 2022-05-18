@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 from replit import db
 import os
-#import subprocess
 from __modules__.console import *
 
 app = Flask('app')

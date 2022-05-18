@@ -11,4 +11,22 @@
 		<input type="submit" value="save"  id="submit">
 		<input type="button" value="run" onclick="window.location = 'https://CGLCode.commandergl.repl.co/{{name}}/python/{{file}}'"  id="submit">
 	</form>
+
+	<script>
+		document.querySelector('textarea').addEventListener('keydown', function(e) {
+		  if (e.key == 'Tab') {
+		    e.preventDefault();
+		    var start = this.selectionStart;
+		    var end = this.selectionEnd;
+		
+		    // set textarea value to: text before caret + tab + text after caret
+		    this.value = this.value.substring(0, start) +
+		      "\t" + this.value.substring(end);
+		
+		    // put caret at right position again
+		    this.selectionStart =
+		      this.selectionEnd = start + 1;
+		  }
+		});
+	</script>
 {% endblock %}
