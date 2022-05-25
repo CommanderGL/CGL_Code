@@ -8,7 +8,7 @@ app.secret_key = "__--CGL_CommanderGL_104--__"
 
 @app.route('/')
 def Home():
-    if "name" in session and "pass" in session:
+    if "name"	in session and "pass" in session:
         return render_template('index.html',
                                name=session["name"],
                                password=session["pass"],
@@ -22,38 +22,44 @@ def Home():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        username = request.form["name"]
-        password = request.form["pass"]
-        for i in db["accounts"]:
-            if username in i['name'] and password in i['pass']:
-                LOGGED_IN = True
-                session["name"] = username
-                session["pass"] = password
-                return redirect(url_for("Home"))
-                break
-            else:
-                LOGGED_IN = False
+  if request.method == "POST":
+    username = request.form["name"]
+    password = request.form["pass"]
+    if username	== "" or password	== "":
+      return render_template('login.html')
+					
+    for i in db["accounts"]:
+      if username in i['name'] and password in i['pass']:
+        LOGGED_IN = True
+        session["name"] = username
+        session["pass"] = password
+        return redirect(url_for("Home"))
+        break
+      else:
+        LOGGED_IN = False
 
-        if LOGGED_IN == False:
-            return render_template('login.html')
+    if LOGGED_IN == False:
+      return render_template('login.html')
 
-    else:
-        return render_template('login.html')
+  else:
+    return render_template('login.html')
 
 
 @app.route('/sign_up', methods=["GET", "POST"])
 def new_a():
-    if request.method == "POST":
-        username = request.form["name"]
-        password = request.form["pass"]
-        db["accounts"].append({'name': username, 'pass': password})
-        session["name"] = username
-        session["pass"] = password
+  if request.method == "POST":
+    if username == "" or password == "":
+      return render_template('new_a.html')
+		
+    username = request.form["name"]
+    password = request.form["pass"]
+    db["accounts"].append({'name': username, 'pass': password})
+    session["name"] = username
+    session["pass"] = password
 
-        return redirect(url_for("Home"))
-    else:
-        return render_template('new_a.html')
+    return redirect(url_for("Home"))
+  else:
+    return render_template('new_a.html')
 
 
 @app.route('/html/edit/<file>', methods=["GET", "POST"])

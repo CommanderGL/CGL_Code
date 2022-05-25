@@ -2,6 +2,7 @@
 
 {% block head %}
 	<title>CGL Code | Create Account</title>
+	<script src="static/JS/login.js" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -10,4 +11,7 @@
 		<input type='password' name='pass' placeholder='Password...'>
 		<input type='submit' value='Sign Up'  id="submit">
 	</form>
+	<br>
+	<input type="checkbox" id="show_password" />
+	<label for="show_password">Show Password</label>
 {% endblock %}

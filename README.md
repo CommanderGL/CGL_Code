@@ -2,6 +2,6 @@
 
 This project is under development so there may be a few glitches.
 
-The website URL is [CGLCode.CommanderGL.repl.co](https://CGLCode.CommanderGL.repl.co)
+The website URL is [code.CommanderGL.repl.co](https://code.CommanderGL.repl.co)
 <br><br>
-Here is the [Replit Page](https://replit.com/@CommanderGL/CGLCode?v=1)
+Here is the [Page On Replit](https://replit.com/@CommanderGL/Code?v=1)
