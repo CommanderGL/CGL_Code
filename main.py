@@ -48,11 +48,11 @@ def login():
 @app.route('/sign_up', methods=["GET", "POST"])
 def new_a():
   if request.method == "POST":
-    if username == "" or password == "":
-      return render_template('new_a.html')
-		
     username = request.form["name"]
     password = request.form["pass"]
+    if username == "" or password == "":
+      return render_template('new_a.html')
+			
     db["accounts"].append({'name': username, 'pass': password})
     session["name"] = username
     session["pass"] = password
